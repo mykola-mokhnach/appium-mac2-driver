@@ -1,3 +1,9 @@
+## [3.2.16](https://github.com/appium/appium-mac2-driver/compare/v3.2.15...v3.2.16) (2026-02-16)
+
+### Bug Fixes
+
+* format ([#375](https://github.com/appium/appium-mac2-driver/issues/375)) ([7d10435](https://github.com/appium/appium-mac2-driver/commit/7d1043564a16c7ab7793854b206752c2204623dd))
+
 ## [3.2.15](https://github.com/appium/appium-mac2-driver/compare/v3.2.14...v3.2.15) (2026-01-28)
 
 ### Miscellaneous Chores
