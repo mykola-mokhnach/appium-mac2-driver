@@ -42,8 +42,8 @@
       ]
     }
   },
-  "main": "./build/index.js",
-  "types": "./build/index.d.ts",
+  "main": "./build/lib/index.js",
+  "types": "./build/lib/index.d.ts",
   "bin": {},
   "dependencies": {
     "@appium/strongbox": "^1.0.0-rc.1",
@@ -92,14 +92,12 @@
     "semantic-release": "^25.0.2",
     "sinon": "^21.0.0",
     "ts-node": "^10.9.1",
-    "typescript": "^5.4.2",
+    "typescript": "^6.0.2",
     "webdriverio": "^9.0.0"
   },
   "files": [
     "lib",
-    "build/index.*",
     "build/lib",
-    "!build/test",
     "scripts",
     "WebDriverAgentMac/Scripts",
     "WebDriverAgentMac/Cartfile",
