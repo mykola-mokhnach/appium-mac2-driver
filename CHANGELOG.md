@@ -1,3 +1,9 @@
+## [3.2.17](https://github.com/appium/appium-mac2-driver/compare/v3.2.16...v3.2.17) (2026-04-10)
+
+### Miscellaneous Chores
+
+* **deps-dev:** bump typescript from 5.9.3 to 6.0.2 ([#376](https://github.com/appium/appium-mac2-driver/issues/376)) ([9e1bf35](https://github.com/appium/appium-mac2-driver/commit/9e1bf354462b05e02dabee06067774bcc48c9156))
+
 ## [3.2.16](https://github.com/appium/appium-mac2-driver/compare/v3.2.15...v3.2.16) (2026-02-16)
 
 ### Bug Fixes
