@@ -1,3 +1,9 @@
+## [3.3.0](https://github.com/appium/appium-mac2-driver/compare/v3.2.17...v3.3.0) (2026-04-11)
+
+### Features
+
+* Add `macos: performAccessibilityAudit` extension ([#377](https://github.com/appium/appium-mac2-driver/issues/377)) ([6d618ec](https://github.com/appium/appium-mac2-driver/commit/6d618ec7c33d0deea07c080c2ef07624dde1ba4b))
+
 ## [3.2.17](https://github.com/appium/appium-mac2-driver/compare/v3.2.16...v3.2.17) (2026-04-10)
 
 ### Miscellaneous Chores
