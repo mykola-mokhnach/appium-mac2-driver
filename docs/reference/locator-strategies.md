@@ -61,12 +61,14 @@ This strategy is an alias for the [`name` strategy](#name).
 This strategy is mapped to the native XCTest predicate locator. Refer to the XCUITest driver's
 [Predicate Locator Strategy guide](https://appium.github.io/appium-xcuitest-driver/latest/reference/ios-predicate/)
 for more details on how to build effective predicate expressions. All supported element [attributes](./element-attributes.md)
-can be used in these expressions, except that most `WKWebView` web element attributes cannot be
-reliably matched directly - use the `am`-prefixed aliases instead:
-[`amIdentifier`](./element-attributes.md#amidentifier), [`amRect`](./element-attributes.md#amrect),
-[`amText`](./element-attributes.md#amtext), [`amType`](./element-attributes.md#amtype) and
-[`amHasKeyboardInputFocus`](./element-attributes.md#amhaskeyboardinputfocus), e.g.
-`amIdentifier == 'done'`.
+can be used in these expressions. A few of them have no native XCTest equivalent that predicate
+expressions can reference directly, so they are only usable through their `am`-prefixed alias:
+[`amRect`](./element-attributes.md#amrect), [`amText`](./element-attributes.md#amtext),
+[`amType`](./element-attributes.md#amtype) and
+[`amHasKeyboardInputFocus`](./element-attributes.md#amhaskeyboardinputfocus). Separately,
+[`amIdentifier`](./element-attributes.md#amidentifier) is the only reliable way to match
+`WKWebView` web elements by their DOM id from this strategy - see
+[`useDomIdAsAccessibilityId`](./settings.md#usedomidasaccessibilityid) - e.g. `amIdentifier == 'done'`.
 
 !!! info "When to Use"
 
@@ -83,8 +85,8 @@ This strategy is mapped to the native XCTest predicate locator, but with respect
 element tree hierarchy. Such locators are basically a supertype of [predicate string](#predicate-string).
 Read [Class Chain Queries Construction Rules](https://github.com/facebookarchive/WebDriverAgent/wiki/Class-Chain-Queries-Construction-Rules)
 for more details on how to build such locators. As with predicate string, the `am`-prefixed
-attribute aliases can be used to reliably match `WKWebView` web elements, at any position in the
-chain.
+attribute aliases can be used at any position in the chain, including `amIdentifier` to reliably
+match `WKWebView` web elements by their DOM id.
 
 !!! info "When to Use"
 
