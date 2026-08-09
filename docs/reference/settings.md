@@ -64,6 +64,13 @@ driver reads `AXDOMIdentifier` and uses it as a fallback for `accessibility id` 
 `identifier` attribute and for the page source. The fallback only applies to elements whose native
 identifier is empty, so locating native elements is never affected.
 
+Native XCTest predicate/class chain matching cannot reliably observe this fallback for the
+standard `identifier` attribute. To locate web elements by DOM id from `predicate string` or
+`class chain` locators, use the [`amIdentifier`](./element-attributes.md#amidentifier) attribute
+instead - it has the exact same value and the exact same setting-gated fallback behavior as
+`identifier`, but can be reliably matched from these locators too, at any position in a class
+chain.
+
 Notes:
 
 - Enabling this makes `accessibility id` lookups that find no native match inspect the

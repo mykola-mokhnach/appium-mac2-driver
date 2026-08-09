@@ -25,6 +25,12 @@
 #import "FBMacros.h"
 #import "XCUIElementQuery+AMHelpers.h"
 
+NSString *const AM_IDENTIFIER_ATTRIBUTE_NAME = @"amIdentifier";
+NSString *const AM_RECT_ATTRIBUTE_NAME = @"amRect";
+NSString *const AM_TEXT_ATTRIBUTE_NAME = @"amText";
+NSString *const AM_TYPE_ATTRIBUTE_NAME = @"amType";
+NSString *const AM_HAS_KEYBOARD_INPUT_FOCUS_ATTRIBUTE_NAME = @"amHasKeyboardInputFocus";
+
 @implementation XCUIElement (AMAttributes)
 
 - (id)am_wdAttributeValueWithName:(NSString *)name
@@ -50,8 +56,17 @@
     return self.title;
   } else if ([wdAttributeName isEqualToString:FBStringify(XCUIElement, value)]) {
     return [FBElementUtils stringValueWithValue:self.value];
-  } else if ([wdAttributeName isEqualToString:FBStringify(XCUIElement, identifier)]) {
-    return self.am_wdIdentifier;
+  } else if ([wdAttributeName isEqualToString:FBStringify(XCUIElement, identifier)]
+             || [wdAttributeName isEqualToString:AM_IDENTIFIER_ATTRIBUTE_NAME]) {
+    return self.am_identifier;
+  } else if ([wdAttributeName isEqualToString:AM_RECT_ATTRIBUTE_NAME]) {
+    return self.am_rect;
+  } else if ([wdAttributeName isEqualToString:AM_TEXT_ATTRIBUTE_NAME]) {
+    return self.am_text;
+  } else if ([wdAttributeName isEqualToString:AM_TYPE_ATTRIBUTE_NAME]) {
+    return self.am_type;
+  } else if ([wdAttributeName isEqualToString:AM_HAS_KEYBOARD_INPUT_FOCUS_ATTRIBUTE_NAME]) {
+    return FBBoolToStr(self.am_hasKeyboardInputFocus);
   }
   // This should not happen
   NSString *description = [NSString stringWithFormat:@"The attribute '%@' is unknown", wdAttributeName];
@@ -60,32 +75,64 @@
                                userInfo:@{}];
 }
 
-- (NSString *)am_wdIdentifier
++ (NSArray<NSString *> *)am_predicateAttributeNames
 {
-  NSString *identifier = self.identifier;
-  // Snapshotting is not free, so only pay for it when the fallback can apply.
-  if (identifier.length > 0 || !FBConfiguration.sharedConfiguration.useDomIdAsAccessibilityId) {
-    return identifier;
+  return @[
+    AM_IDENTIFIER_ATTRIBUTE_NAME,
+    AM_RECT_ATTRIBUTE_NAME,
+    AM_TEXT_ATTRIBUTE_NAME,
+    AM_TYPE_ATTRIBUTE_NAME,
+    AM_HAS_KEYBOARD_INPUT_FOCUS_ATTRIBUTE_NAME,
+  ];
+}
+
++ (nullable id)am_valueForPredicateAttributeName:(NSString *)name target:(id)target
+{
+  if ([name isEqualToString:AM_IDENTIFIER_ATTRIBUTE_NAME]) {
+    NSString *identifier = [target valueForKey:@"identifier"];
+    // Snapshotting is not free, so only pay for it when the fallback can apply.
+    if (identifier.length > 0 || !FBConfiguration.sharedConfiguration.useDomIdAsAccessibilityId) {
+      return identifier;
+    }
+    return [AMSnapshotUtils domIdentifierWithSnapshot:target] ?: identifier;
   }
-  return [AMSnapshotUtils wdIdentifierWithSnapshot:[self snapshotWithError:nil]] ?: identifier;
+  if ([name isEqualToString:AM_RECT_ATTRIBUTE_NAME]) {
+    return AMCGRectToDict([[target valueForKey:@"frame"] rectValue]);
+  }
+  if ([name isEqualToString:AM_TEXT_ATTRIBUTE_NAME]) {
+    return [self am_textWithSource:target];
+  }
+  if ([name isEqualToString:AM_TYPE_ATTRIBUTE_NAME]) {
+    return [FBElementTypeTransformer stringWithElementType:[[target valueForKey:@"elementType"] unsignedLongLongValue]];
+  }
+  if ([name isEqualToString:AM_HAS_KEYBOARD_INPUT_FOCUS_ATTRIBUTE_NAME]) {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"hasKeyboardFocus == YES"];
+    return @([predicate evaluateWithObject:target]);
+  }
+  return nil;
+}
+
+- (NSString *)am_identifier
+{
+  return [self.class am_valueForPredicateAttributeName:AM_IDENTIFIER_ATTRIBUTE_NAME target:self];
 }
 
 - (NSDictionary<NSString *, NSNumber *> *)am_rect
 {
-  return AMCGRectToDict(self.frame);
+  return [self.class am_valueForPredicateAttributeName:AM_RECT_ATTRIBUTE_NAME target:self];
 }
 
 - (NSString *)am_text
 {
   if (!FBConfiguration.sharedConfiguration.fetchFullText) {
-    return [self am_textWithSource:self];
+    return [self.class am_valueForPredicateAttributeName:AM_TEXT_ATTRIBUTE_NAME target:self];
   }
 
   NSError *error;
   XCUIElementQuery *query = [self valueForKey:@"query"];
   id<XCUIElementAttributes> snapshot = [query am_uniqueSnapshotWithError:&error];
   if (nil != snapshot) {
-    return [self am_textWithSource:snapshot];
+    return [self.class am_valueForPredicateAttributeName:AM_TEXT_ATTRIBUTE_NAME target:snapshot];
   }
 
   NSString *reason = [NSString stringWithFormat:@"Cannot extract the full text of '%@' element. Original error: %@",
@@ -95,16 +142,15 @@
 
 - (NSString *)am_type
 {
-  return [FBElementTypeTransformer stringWithElementType:self.elementType];
+  return [self.class am_valueForPredicateAttributeName:AM_TYPE_ATTRIBUTE_NAME target:self];
 }
 
 - (BOOL)am_hasKeyboardInputFocus
 {
-  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"hasKeyboardFocus == YES"];
-  return [predicate evaluateWithObject:self];
+  return [[self.class am_valueForPredicateAttributeName:AM_HAS_KEYBOARD_INPUT_FOCUS_ATTRIBUTE_NAME target:self] boolValue];
 }
 
-- (NSString *)am_textWithSource:(id<XCUIElementAttributes>)source
++ (NSString *)am_textWithSource:(id<XCUIElementAttributes>)source
 {
   NSArray<NSString *> *candidates = @[
     [FBElementUtils stringValueWithValue:source.value],

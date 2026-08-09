@@ -21,6 +21,57 @@ integer-encoded value.
 Corresponds to the element's XCTest [`identifier`](https://developer.apple.com/documentation/xcuiautomation/xcuielementattributes/identifier)
 value. Can be `null`.
 
+## amIdentifier
+
+> Example: `identifier`
+
+Non-standard, Mac2-driver-specific alias for [`identifier`](#identifier), with the exact same
+value and the exact same [`useDomIdAsAccessibilityId`](./settings.md#usedomidasaccessibilityid)-gated
+DOM id fallback behavior. Its only difference from `identifier` is that, unlike `identifier`,
+it can also be used in [predicate string](./locator-strategies.md#predicate-string) and
+[class chain](./locator-strategies.md#class-chain) locators (at any position in a class chain) to
+reliably match against, including web elements by their DOM id when the setting above is enabled,
+e.g. `amIdentifier == 'my-dom-id'`.
+
+## amRect
+
+> Example: `{"x": 0,"y": 0,"width": 100,"height": 100}`
+
+Non-standard, Mac2-driver-specific alias for [`frame`](#frame), with the exact same value. Unlike
+`frame`, it can also be used in [predicate string](./locator-strategies.md#predicate-string) and
+[class chain](./locator-strategies.md#class-chain) locators (at any position in a class chain) to
+reliably match against `WKWebView` web elements.
+
+## amText
+
+> Example: `my text`
+
+Non-standard, Mac2-driver-specific attribute. The element's text: the first non-empty value out
+of its `value`, `label`, `placeholderValue` and `title`, in that order, or an empty string if all
+of them are empty. Unlike those individual attributes, it can be used in
+[predicate string](./locator-strategies.md#predicate-string) and
+[class chain](./locator-strategies.md#class-chain) locators (at any position in a class chain) to
+reliably match against `WKWebView` web elements.
+
+## amType
+
+> Example: `XCUIElementTypeButton`
+
+Non-standard, Mac2-driver-specific alias for [`elementType`](#elementtype), except as its string
+name (e.g. `XCUIElementTypeButton`) instead of the integer code. Unlike `elementType`, it can also
+be used in [predicate string](./locator-strategies.md#predicate-string) and
+[class chain](./locator-strategies.md#class-chain) locators (at any position in a class chain) to
+reliably match against `WKWebView` web elements.
+
+## amHasKeyboardInputFocus
+
+> Example: `true`
+
+Non-standard, Mac2-driver-specific alias for [`focused`](#focused), with the exact same value.
+Unlike `focused`, it can also be used in [predicate string](./locator-strategies.md#predicate-string)
+and [class chain](./locator-strategies.md#class-chain) locators (at any position in a class chain)
+to reliably match against `WKWebView` web elements.
+
 ## label
 
 > Examples: `my label`

@@ -18,6 +18,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/*!
+ Predicate string / class chain keypath names for the am_* attributes below. These are
+ non-standard, Mac2-driver-specific attributes, in addition to the standard
+ XCUIElementAttributes ones.
+ */
+extern NSString *const AM_IDENTIFIER_ATTRIBUTE_NAME;
+extern NSString *const AM_RECT_ATTRIBUTE_NAME;
+extern NSString *const AM_TEXT_ATTRIBUTE_NAME;
+extern NSString *const AM_TYPE_ATTRIBUTE_NAME;
+extern NSString *const AM_HAS_KEYBOARD_INPUT_FOCUS_ATTRIBUTE_NAME;
+
 @interface XCUIElement (AMAttributes)
 
 /**
@@ -58,7 +69,24 @@ NS_ASSUME_NONNULL_BEGIN
 
  @return The identifier. Could be an empty string
  */
-- (NSString *)am_wdIdentifier;
+- (NSString *)am_identifier;
+
+/**
+ The full set of am_* predicate attribute names (AM_IDENTIFIER_ATTRIBUTE_NAME and
+ friends) usable in predicate string / class chain locators.
+ */
++ (NSArray<NSString *> *)am_predicateAttributeNames;
+
+/**
+ Resolves the value of an am_* predicate attribute name directly against a target,
+ which may be a live XCUIElement or a raw id<XCUIElementSnapshot> - the latter keeps
+ per-node predicate evaluation cheap by not needing to resolve a live element first.
+
+ @param name one of AM_IDENTIFIER_ATTRIBUTE_NAME and friends
+ @param target the XCUIElement or id<XCUIElementSnapshot> to resolve the value against
+ @return The resolved value, or nil if name is not a known am_* attribute name
+ */
++ (nullable id)am_valueForPredicateAttributeName:(NSString *)name target:(id)target;
 
 @end
 

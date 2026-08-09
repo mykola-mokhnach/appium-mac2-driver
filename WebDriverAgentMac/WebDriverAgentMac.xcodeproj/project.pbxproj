@@ -65,8 +65,6 @@
 		7109C0402565B5C4006BFD13 /* NSPredicate+FBFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 710527E82565731200130763 /* NSPredicate+FBFormat.m */; };
 		7109C0422565B5C7006BFD13 /* XCUIApplication+AMHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 710527FD2565802200130763 /* XCUIApplication+AMHelpers.h */; };
 		7109C0452565B5CB006BFD13 /* XCUIApplication+AMHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 710527FE2565802200130763 /* XCUIApplication+AMHelpers.m */; };
-		715AAB102F9C450000C90123 /* XCUIApplication+AMAccessibilityAudit.h in Headers */ = {isa = PBXBuildFile; fileRef = 715AAB122F9C450000C90123 /* XCUIApplication+AMAccessibilityAudit.h */; };
-		715AAB112F9C450000C90123 /* XCUIApplication+AMAccessibilityAudit.m in Sources */ = {isa = PBXBuildFile; fileRef = 715AAB132F9C450000C90123 /* XCUIApplication+AMAccessibilityAudit.m */; };
 		7109C0472565B5DB006BFD13 /* DDNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = 7151AD1E2564EFAC008B8B2A /* DDNumber.h */; };
 		7109C0492565B5DD006BFD13 /* DDNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 7151AD1D2564EFAC008B8B2A /* DDNumber.m */; };
 		7109C04B2565B5E0006BFD13 /* DDRange.h in Headers */ = {isa = PBXBuildFile; fileRef = 7151AD1F2564EFAC008B8B2A /* DDRange.h */; };
@@ -145,6 +143,8 @@
 		715117522E8C452E00C90122 /* AMPasteboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 715117512E8C452E00C90122 /* AMPasteboard.m */; };
 		715117532E8C452E00C90122 /* AMPasteboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 715117502E8C452E00C90122 /* AMPasteboard.h */; };
 		715117552E8C4C3300C90122 /* AMPasteboardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 715117542E8C4C3300C90122 /* AMPasteboardTests.m */; };
+		715AAB102F9C450000C90123 /* XCUIApplication+AMAccessibilityAudit.h in Headers */ = {isa = PBXBuildFile; fileRef = 715AAB122F9C450000C90123 /* XCUIApplication+AMAccessibilityAudit.h */; };
+		715AAB112F9C450000C90123 /* XCUIApplication+AMAccessibilityAudit.m in Sources */ = {isa = PBXBuildFile; fileRef = 715AAB132F9C450000C90123 /* XCUIApplication+AMAccessibilityAudit.m */; };
 		71688A98256461ED0007F55B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71688A97256461ED0007F55B /* AppDelegate.m */; };
 		71688A9B256461ED0007F55B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71688A9A256461ED0007F55B /* ViewController.m */; };
 		71688A9D256461F00007F55B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71688A9C256461F00007F55B /* Assets.xcassets */; };
@@ -202,6 +202,8 @@
 		71A5C67A29A4FAF900421C37 /* FBFailureProofTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 71A5C67829A4FAF900421C37 /* FBFailureProofTestCase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		71AA30BF25EFF81900151CED /* AMKeyboardUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 71AA30BD25EFF81900151CED /* AMKeyboardUtils.h */; };
 		71AA30C025EFF81900151CED /* AMKeyboardUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AA30BE25EFF81900151CED /* AMKeyboardUtils.m */; };
+		71AB00012BD1345000997FF4 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AB00002BD1345000997FF4 /* WebViewController.m */; };
+		71AB00042BD1345000997FF4 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71AB00032BD1345000997FF4 /* WebKit.framework */; };
 		71B00E8E2566D4BA0010DA73 /* AMIntegrationTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B00E8D2566D4BA0010DA73 /* AMIntegrationTestCase.m */; };
 		71B00E9B2566D7B00010DA73 /* WebDriverAgentLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7199B3AB2565B122000B5C51 /* WebDriverAgentLib.framework */; };
 		71B00EA02566D9570010DA73 /* AMFindElementTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B00E9F2566D9570010DA73 /* AMFindElementTests.m */; };
@@ -264,8 +266,6 @@
 		710527F22565744400130763 /* FBSession-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FBSession-Private.h"; sourceTree = "<group>"; };
 		710527FD2565802200130763 /* XCUIApplication+AMHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XCUIApplication+AMHelpers.h"; sourceTree = "<group>"; };
 		710527FE2565802200130763 /* XCUIApplication+AMHelpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "XCUIApplication+AMHelpers.m"; sourceTree = "<group>"; };
-		715AAB122F9C450000C90123 /* XCUIApplication+AMAccessibilityAudit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XCUIApplication+AMAccessibilityAudit.h"; sourceTree = "<group>"; };
-		715AAB132F9C450000C90123 /* XCUIApplication+AMAccessibilityAudit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "XCUIApplication+AMAccessibilityAudit.m"; sourceTree = "<group>"; };
 		710528162565A09100130763 /* FBScreenshotCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBScreenshotCommands.m; sourceTree = "<group>"; };
 		710528172565A09100130763 /* FBScreenshotCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBScreenshotCommands.h; sourceTree = "<group>"; };
 		7105281C2565A33300130763 /* FBSessionCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSessionCommands.m; sourceTree = "<group>"; };
@@ -395,6 +395,8 @@
 		7151AE302564FA37008B8B2A /* FBRuntimeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBRuntimeUtils.h; sourceTree = "<group>"; };
 		7151AE352564FAAC008B8B2A /* FBUnknownCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBUnknownCommands.m; sourceTree = "<group>"; };
 		7151AE362564FAAC008B8B2A /* FBUnknownCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBUnknownCommands.h; sourceTree = "<group>"; };
+		715AAB122F9C450000C90123 /* XCUIApplication+AMAccessibilityAudit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XCUIApplication+AMAccessibilityAudit.h"; sourceTree = "<group>"; };
+		715AAB132F9C450000C90123 /* XCUIApplication+AMAccessibilityAudit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "XCUIApplication+AMAccessibilityAudit.m"; sourceTree = "<group>"; };
 		715C123827EB587100D6F63B /* XCTIssue+AMPatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XCTIssue+AMPatcher.h"; sourceTree = "<group>"; };
 		715C123927EB587100D6F63B /* XCTIssue+AMPatcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "XCTIssue+AMPatcher.m"; sourceTree = "<group>"; };
 		71688A93256461ED0007F55B /* WebDriverAgent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebDriverAgent.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -460,6 +462,9 @@
 		71A5C67829A4FAF900421C37 /* FBFailureProofTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBFailureProofTestCase.h; sourceTree = "<group>"; };
 		71AA30BD25EFF81900151CED /* AMKeyboardUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKeyboardUtils.h; sourceTree = "<group>"; };
 		71AA30BE25EFF81900151CED /* AMKeyboardUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKeyboardUtils.m; sourceTree = "<group>"; };
+		71AB00002BD1345000997FF4 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		71AB00022BD1345000997FF4 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		71AB00032BD1345000997FF4 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		71B00E8B2566D4B90010DA73 /* IntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		71B00E8D2566D4BA0010DA73 /* AMIntegrationTestCase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMIntegrationTestCase.m; sourceTree = "<group>"; };
 		71B00E8F2566D4BA0010DA73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -482,6 +487,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71AB00042BD1345000997FF4 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,6 +617,8 @@
 				71688A97256461ED0007F55B /* AppDelegate.m */,
 				71688A99256461ED0007F55B /* ViewController.h */,
 				71688A9A256461ED0007F55B /* ViewController.m */,
+				71AB00022BD1345000997FF4 /* WebViewController.h */,
+				71AB00002BD1345000997FF4 /* WebViewController.m */,
 				71688A9C256461F00007F55B /* Assets.xcassets */,
 				71688A9E256461F00007F55B /* Main.storyboard */,
 				71688AA1256461F00007F55B /* Info.plist */,
@@ -626,6 +634,7 @@
 				714CA732256668F600353B27 /* XCTAutomationSupport.framework */,
 				714CA709256648A100353B27 /* libxml2.tbd */,
 				71688AE2256466070007F55B /* XCTest.framework */,
+				71AB00032BD1345000997FF4 /* WebKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1159,6 +1168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71688A9B256461ED0007F55B /* ViewController.m in Sources */,
+				71AB00012BD1345000997FF4 /* WebViewController.m in Sources */,
 				71688AA3256461F00007F55B /* main.m in Sources */,
 				71688A98256461ED0007F55B /* AppDelegate.m in Sources */,
 			);

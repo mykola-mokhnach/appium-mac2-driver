@@ -685,7 +685,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" restorable="NO" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -709,6 +709,7 @@
                     <tabViewItems>
                         <tabViewItem identifier="" id="Mia-WI-iEB"/>
                         <tabViewItem identifier="" id="sIZ-jZ-jj9"/>
+                        <tabViewItem identifier="" id="Nlk-3F-Wcb"/>
                     </tabViewItems>
                     <tabView key="tabView" type="noTabsNoBorder" id="Rch-4v-RJW">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -722,6 +723,7 @@
                         <outlet property="tabView" destination="Rch-4v-RJW" id="1XV-Um-WgP"/>
                         <segue destination="Pkx-be-7b9" kind="relationship" relationship="tabItems" id="IJQ-4v-ZpO"/>
                         <segue destination="bnY-XE-5sK" kind="relationship" relationship="tabItems" id="MtI-PF-Enx"/>
+                        <segue destination="Qzv-6y-WKw" kind="relationship" relationship="tabItems" id="Pma-8s-CkV"/>
                     </connections>
                 </tabViewController>
                 <customObject id="iEe-Sq-WC0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -831,6 +833,19 @@
                 <customObject id="TZC-Og-vHj" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="545" y="-408"/>
+        </scene>
+        <!--WebView-->
+        <scene sceneID="tGx-1M-hRz">
+            <objects>
+                <viewController title="WebView" id="Qzv-6y-WKw" customClass="WebViewController" sceneMemberID="viewController">
+                    <view key="view" id="Fbv-Y8-Enh">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="Xdm-hz-1Yc" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1075" y="-408"/>
         </scene>
     </scenes>
 </document>

@@ -16,6 +16,7 @@
 
 #import "AMIntegrationTestCase.h"
 
+#import "AMSnapshotUtils.h"
 #import "FBConfiguration.h"
 
 @interface AMIntegrationTestCase ()
@@ -51,6 +52,19 @@
 - (void)switchToEditsTab
 {
   [self.testedApplication.radioButtons[@"Edits"].firstMatch click];
+}
+
+- (void)switchToWebViewTab
+{
+  [self.testedApplication.radioButtons[@"WebView"].firstMatch click];
+}
+
+- (void)skipUnlessAccessibilityTrusted
+{
+  XCTSkipUnless(AMSnapshotUtils.isAccessibilityTrusted,
+               @"This process is not trusted for the Accessibility API. Grant Accessibility "
+               @"permission to it in System Settings > Privacy & Security > Accessibility "
+               @"(note: an ad-hoc-signed build's grant does not survive a rebuild), then re-run.");
 }
 
 @end

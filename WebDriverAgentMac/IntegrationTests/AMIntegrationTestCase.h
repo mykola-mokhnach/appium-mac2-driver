@@ -32,6 +32,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)switchToEditsTab;
 
+- (void)switchToWebViewTab;
+
+/**
+ Skips the current test unless this process is trusted for the Accessibility API.
+ Tests that rely on the useDomIdAsAccessibilityId fallback need this - without it,
+ WebKit DOM identifier resolution silently returns nothing, which otherwise surfaces
+ as a confusing "found 0 elements" test failure rather than a clear "grant
+ Accessibility permission and re-run" skip reason.
+ */
+- (void)skipUnlessAccessibilityTrusted;
+
 @end
 
 NS_ASSUME_NONNULL_END

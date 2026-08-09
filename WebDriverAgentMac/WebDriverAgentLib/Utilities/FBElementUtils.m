@@ -11,6 +11,7 @@
 
 #import "FBExceptions.h"
 #import "FBMacros.h"
+#import "XCUIElement+AMAttributes.h"
 
 @implementation FBElementUtils
 
@@ -43,7 +44,12 @@
       FBStringify(XCUIElement, title),
       FBStringify(XCUIElement, value),
       FBStringify(XCUIElement, frame),
-      FBStringify(XCUIElement, identifier)
+      FBStringify(XCUIElement, identifier),
+      AM_IDENTIFIER_ATTRIBUTE_NAME,
+      AM_RECT_ATTRIBUTE_NAME,
+      AM_TEXT_ATTRIBUTE_NAME,
+      AM_TYPE_ATTRIBUTE_NAME,
+      AM_HAS_KEYBOARD_INPUT_FOCUS_ATTRIBUTE_NAME
     ];
   });
   return attributeNames;

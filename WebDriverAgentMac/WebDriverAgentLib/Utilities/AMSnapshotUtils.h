@@ -44,6 +44,17 @@ NS_ASSUME_NONNULL_BEGIN
 + (nullable NSString *)wdIdentifierWithSnapshot:(nullable id<XCUIElementSnapshot>)snapshot;
 
 /**
+ Whether this process is trusted for the Accessibility API. WebKit DOM identifier
+ resolution silently yields no results without this, since AXDOMIdentifier reads
+ fail with kAXErrorAPIDisabled - useful for tests and diagnostics to tell "no DOM id
+ fallback happened because the setting is off" apart from "no DOM id fallback
+ happened because this process lacks Accessibility permission".
+
+ @return YES if AXDOMIdentifier reads are expected to work, NO otherwise
+ */
++ (BOOL)isAccessibilityTrusted;
+
+/**
  Resolves snapshot hashes back to live elements below the given root element.
 
  @param hashes snapshot hashes to resolve, as returned by hashWithSnapshot:
@@ -56,6 +67,17 @@ NS_ASSUME_NONNULL_BEGIN
                                    rootElement:(XCUIElement *)rootElement
                                   rootSnapshot:(id<XCUIElementSnapshot>)rootSnapshot
                          includeOnlyFirstMatch:(BOOL)firstMatch;
+
+/**
+ Reads the non-standard AXDOMIdentifier attribute, where WebKit publishes a web
+ node's HTML `id`. Returns nil for native elements, which report
+ kAXErrorAttributeUnsupported for it, or when this process lacks Accessibility
+ permission.
+
+ @param snapshot snapshot instance to read the DOM identifier from
+ @return The DOM identifier or nil
+ */
++ (nullable NSString *)domIdentifierWithSnapshot:(nullable id)snapshot;
 
 @end
 

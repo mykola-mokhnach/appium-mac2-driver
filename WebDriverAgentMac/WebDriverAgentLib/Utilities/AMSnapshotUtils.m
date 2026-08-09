@@ -65,17 +65,6 @@ static BOOL AMIsAccessibilityTrusted(void)
   return isTrusted;
 }
 
-@interface AMSnapshotUtils ()
-
-/**
- Reads the non-standard AXDOMIdentifier attribute, where WebKit publishes a web
- node's HTML `id`. Returns nil for native elements, which report
- kAXErrorAttributeUnsupported for it.
- */
-+ (nullable NSString *)domIdentifierWithSnapshot:(nullable id)snapshot;
-
-@end
-
 @implementation AMSnapshotUtils
 
 + (NSString *)hashWithSnapshot:(id)snapshot
@@ -92,6 +81,11 @@ static BOOL AMIsAccessibilityTrusted(void)
     return identifier;
   }
   return [self domIdentifierWithSnapshot:snapshot] ?: identifier;
+}
+
++ (BOOL)isAccessibilityTrusted
+{
+  return AMIsAccessibilityTrusted();
 }
 
 + (NSArray<XCUIElement *> *)elementsWithHashes:(NSSet<NSString *> *)hashes
