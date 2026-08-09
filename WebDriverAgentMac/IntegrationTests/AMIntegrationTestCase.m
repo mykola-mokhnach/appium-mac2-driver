@@ -59,6 +59,25 @@
   [self.testedApplication.radioButtons[@"WebView"].firstMatch click];
 }
 
+/**
+ Reading AXDOMIdentifier (unlike ordinary XCTest snapshotting) goes through the macOS
+ Accessibility API, which requires the process to be trusted under System Settings > Privacy &
+ Security > Accessibility. Two things make that grant easy to lose track of while iterating
+ locally in Xcode:
+
+ - Ad-hoc code signing loses the grant on every rebuild. macOS ties an Accessibility grant to
+   the binary's signing identity (its CDHash), and the default ad-hoc signature
+   (Signature=adhoc, no Team ID) gets a new CDHash on every build. The permission then appears
+   to "not stick" - it was actually granted, just to a binary that no longer exists. Assigning
+   a stable signing identity (e.g. an "Apple Development" certificate under a real Team ID) in
+   the target's Signing & Capabilities keeps the CDHash constant across rebuilds, so the grant
+   persists. This has to be done for both the WebDriverAgent app target and the
+   IntegrationTests test bundle target - granting only one leaves the other still ad-hoc signed
+   and still losing trust every build.
+ - xcodebuild build alone does not regenerate the signed XCTRunner wrapper app that actually
+   hosts and runs the tests, so a plain build after a signing change can silently run against a
+   stale runner. Use build-for-testing (or test, or Xcode's own Test action) instead.
+ */
 - (void)skipUnlessAccessibilityTrusted
 {
   XCTSkipUnless(AMSnapshotUtils.isAccessibilityTrusted,
