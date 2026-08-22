@@ -9,8 +9,7 @@
 
 #import "FBWebServer.h"
 
-#import "RoutingConnection.h"
-#import "RoutingHTTPServer.h"
+#import "AMHTTPServer.h"
 
 #import "FBCommandHandler.h"
 #import "FBErrorBuilder.h"
@@ -25,23 +24,9 @@
 static NSString *const FBServerURLBeginMarker = @"ServerURLHere->";
 static NSString *const FBServerURLEndMarker = @"<-ServerURLHere";
 
-@interface FBHTTPConnection : RoutingConnection
-@end
-
-@implementation FBHTTPConnection
-
-- (void)handleResourceNotFound
-{
-  [FBLogger logFmt:@"Received request for %@ which we do not handle", self.requestURI];
-  [super handleResourceNotFound];
-}
-
-@end
-
-
 @interface FBWebServer ()
 @property (nonatomic, strong) FBExceptionHandler *exceptionHandler;
-@property (nonatomic, strong) RoutingHTTPServer *server;
+@property (nonatomic, strong) AMHTTPServer *server;
 @property (atomic, assign) BOOL keepAlive;
 @end
 
@@ -76,13 +61,12 @@ static NSString *const FBServerURLEndMarker = @"<-ServerURLHere";
 
 - (void)startHTTPServer
 {
-  self.server = [[RoutingHTTPServer alloc] init];
+  self.server = [[AMHTTPServer alloc] init];
   [self.server setRouteQueue:dispatch_get_main_queue()];
   [self.server setInterface:FBConfiguration.sharedConfiguration.serverInterface];
   [self.server setDefaultHeader:@"Server" value:@"WebDriverAgent/1.0"];
   [self.server setDefaultHeader:@"Access-Control-Allow-Origin" value:@"*"];
   [self.server setDefaultHeader:@"Access-Control-Allow-Headers" value:@"Content-Type, X-Requested-With"];
-  [self.server setConnectionClass:[FBHTTPConnection self]];
 
   [self registerRouteHandlers:[self.class collectCommandHandlerClasses]];
   [self registerServerKeyRouteHandlers];
@@ -119,7 +103,7 @@ static NSString *const FBServerURLEndMarker = @"<-ServerURLHere";
   self.keepAlive = NO;
 }
 
-- (BOOL)attemptToStartServer:(RoutingHTTPServer *)server onPort:(NSInteger)port withError:(NSError **)error
+- (BOOL)attemptToStartServer:(AMHTTPServer *)server onPort:(NSInteger)port withError:(NSError **)error
 {
   server.port = (UInt16)port;
   NSError *innerError = nil;
