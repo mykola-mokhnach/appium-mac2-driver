@@ -1,3 +1,9 @@
+## [4.3.1](https://github.com/appium/appium-mac2-driver/compare/v4.3.0...v4.3.1) (2026-08-30)
+
+### Miscellaneous Chores
+
+* **deps-dev:** bump @appium/docutils from 2.5.2 to 3.0.0 ([#417](https://github.com/appium/appium-mac2-driver/issues/417)) ([277db80](https://github.com/appium/appium-mac2-driver/commit/277db80af726d55810a15202582a841c97f37da1))
+
 ## [4.3.0](https://github.com/appium/appium-mac2-driver/compare/v4.2.0...v4.3.0) (2026-08-26)
 
 ### Features
