@@ -63,10 +63,10 @@
     "e2e-test": "npm run build && node --enable-source-maps --test --test-concurrency=1 --test-timeout=600000 \"build/test/functional/**/*.test.js\""
   },
   "dependencies": {
-    "@appium/strongbox": "^1.0.0-rc.1",
+    "@appium/strongbox": "^2.0.0",
     "@colors/colors": "^1.6.0",
     "appium-xcode": "^7.1.0",
-    "asyncbox": "^6.3.0",
+    "asyncbox": "^6.4.3",
     "axios": "^1.16.0",
     "portscanner": "^2.2.0",
     "teen_process": "^4.0.4"
