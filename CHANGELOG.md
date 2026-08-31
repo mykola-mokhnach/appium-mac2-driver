@@ -1,3 +1,9 @@
+## [4.3.2](https://github.com/appium/appium-mac2-driver/compare/v4.3.1...v4.3.2) (2026-08-31)
+
+### Miscellaneous Chores
+
+* **deps:** bump @appium/strongbox from 1.1.3 to 2.0.0 ([#416](https://github.com/appium/appium-mac2-driver/issues/416)) ([affff16](https://github.com/appium/appium-mac2-driver/commit/affff16d12e0348e4fab5e219e6ba4e1a1228cc9))
+
 ## [4.3.1](https://github.com/appium/appium-mac2-driver/compare/v4.3.0...v4.3.1) (2026-08-30)
 
 ### Miscellaneous Chores
